@@ -6,7 +6,7 @@ Demo project modified from: https://github.com/electron/electron-quick-start
 
 ![Master Electron](https://raw.githubusercontent.com/stackacademytv/master-electron/master/splash.png)
 
-###To run electron globally
+### To run electron globally
 ```
 npm i -g electron
 electron //to launch electron
