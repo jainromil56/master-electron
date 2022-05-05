@@ -1,5 +1,16 @@
 // Modules
 const {app, BrowserWindow} = require('electron')
+const colors = require('colors')
+const bcrypt = require('bcrypt')
+
+// using colors
+console.log(colors.rainbow('Hello world'))
+
+// using bcrypt for encrypting string
+bcrypt.hash("myPlaintextPassword", 12, function(err, hash) {
+  // Store hash in your password DB.
+  console.log(hash)
+});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -9,7 +20,7 @@ let mainWindow
 function createWindow () {
 
   mainWindow = new BrowserWindow({
-    width: 1000, height: 800,
+    width: 1600, height: 800,
     webPreferences: {
       // --- !! IMPORTANT !! ---
       // Disable 'contextIsolation' to allow 'nodeIntegration'

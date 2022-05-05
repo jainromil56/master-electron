@@ -11,4 +11,9 @@ Demo project modified from: https://github.com/electron/electron-quick-start
 npm i -g electron
 electron //to launch electron
 electron . //to launch current project with electron
+npm start //Or use this simple command
+
+nodemon --exec electron . //Automatically Rerender
+//OR
+npm run watch //To automatically renrender
 ```
