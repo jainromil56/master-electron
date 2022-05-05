@@ -18,6 +18,9 @@ npm run nodemon --exec electron .    //Automatically Rerender
 npm run watch    //To automatically renrender
 ```
 
+### Commands to be known
+- To know package dependencies -> npm list --depth=0
+
 ### Points to be known
 
 - using chrome inspector
