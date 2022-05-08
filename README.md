@@ -45,7 +45,8 @@ npm run watch    //To automatically renrender
   // making modal: true will make secondary window to stay until its closed
   modal: true,
   // show is false for not showing initially
-  show: false
+  show: false,
+  frame: false   //for frameless window
    });
 
 

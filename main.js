@@ -37,7 +37,7 @@ function createWindow() {
     // making modal: true will make secondary window to stay until its closed
     modal: true,
     // show is false for not showing initially
-    show: false 
+    show: false,
   });
 
   // Load index.html into the new BrowserWindow
