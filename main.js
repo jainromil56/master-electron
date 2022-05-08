@@ -32,11 +32,26 @@ function createWindow() {
       nodeIntegration: true,
     },
     backgroundColor: "#2B2E3B",
+    // parent means attaching this to parent and when we quit parent, child gets quit automatically
+    parent: mainWindow,
+    // making modal: true will make secondary window to stay until its closed
+    modal: true,
+    // show is false for not showing initially
+    show: false 
   });
 
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile("index.html");
-  secondWindow.loadFile("index.html");
+  secondWindow.loadFile("secondary.html");
+
+  // window will appear after 2 sec and dissapear after 3 sec
+  setTimeout( () => {
+    secondWindow.show()
+    setTimeout(() => {
+      secondWindow.close()
+      secondWindow = null
+    }, 3000);
+  }, 2000)
 
   // Open DevTools - Remove for PRODUCTION!
   // mainWindow.webContents.openDevTools();
