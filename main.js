@@ -11,6 +11,8 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 800,
+    // now it can be minimized till this only
+    minWidth: 300, minHeight:150,
     webPreferences: {
       // --- !! IMPORTANT !! ---
       // Disable 'contextIsolation' to allow 'nodeIntegration'
@@ -35,29 +37,47 @@ function createWindow() {
       nodeIntegration: true,
     },
     backgroundColor: "#2B2E3B",
-    // parent means attaching this to parent and when we quit parent, child gets quit automatically
-    parent: mainWindow,
     // making modal: true will make secondary window to stay until its closed
     modal: true,
     // show is false for not showing initially
-    show: false,
-  });
+    show: true,
+  }); 
 
+  // when second window is closed, mainwindow gets maximized
+  secondWindow.on('closed', ()=>{
+    mainWindow.maximize()
+  })
+  
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile("index.html");
   secondWindow.loadFile("secondary.html");
 
   // window will appear after 2 sec and dissapear after 3 sec
-  setTimeout( () => {
-    secondWindow.show()
-    setTimeout(() => {
-      secondWindow.close()
-      secondWindow = null
-    }, 3000);
-  }, 2000)
+  // setTimeout( () => {
+  //   secondWindow.show()
+  //   setTimeout(() => {
+  //     secondWindow.close()
+  //     secondWindow = null
+  //   }, 3000);
+  // }, 2000)
 
   // Open DevTools - Remove for PRODUCTION!
   // mainWindow.webContents.openDevTools();
+
+  // helps in focusing on default window
+  mainWindow.on('focus', ()=>{
+    console.log('Main window focus')
+  })
+  secondWindow.on('focus', ()=>{
+    console.log('Second window focus')
+  })
+
+  // helps in focussing on our whole app, disregarding of any window
+  app.on('browser-window-focus',()=>{
+    console.log('App focussed')
+  })
+
+  console.log(BrowserWindow.getAllWindows())
 
   // Listen for window being closed
   mainWindow.on("closed", () => {
