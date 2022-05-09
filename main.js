@@ -1,6 +1,7 @@
 // Modules
 const { app, BrowserWindow } = require("electron");
 const windowStateKeeper = require('electron-window-state');
+const { webContents } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -36,22 +37,6 @@ function createWindow() {
     titleBarStyle: 'hidden',
   });
 
-  secondWindow = new BrowserWindow({
-    width: 700,
-    height: 300,
-    webPreferences: {
-      // --- !! IMPORTANT !! ---
-      // Disable 'contextIsolation' to allow 'nodeIntegration'
-      // 'contextIsolation' defaults to "true" as from Electron v12
-      contextIsolation: false,
-      nodeIntegration: true,
-    },
-    backgroundColor: "#2B2E3B",
-    // making modal: true will make secondary window to stay until its closed
-    modal: true,
-    // show is false for not showing initially
-    show: true,
-  }); 
 
   // when second window is closed, mainwindow gets maximized
   // secondWindow.on('closed', ()=>{
@@ -60,34 +45,35 @@ function createWindow() {
 
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile("index.html");
-  secondWindow.loadFile("secondary.html");
-
-  // window will appear after 2 sec and dissapear after 3 sec
-  // setTimeout( () => {
-  //   secondWindow.show()
-  //   setTimeout(() => {
-  //     secondWindow.close()
-  //     secondWindow = null
-  //   }, 3000);
-  // }, 2000)
+  // secondWindow.loadFile("secondary.html");
 
   // Open DevTools - Remove for PRODUCTION!
   // mainWindow.webContents.openDevTools();
 
+  let wc = mainWindow.webContents
+  console.log(wc)
   WinState.manage(mainWindow)
 
-  // helps in focusing on default window
-  mainWindow.on('focus', ()=>{
-    console.log('Main window focus')
-  })
-  secondWindow.on('focus', ()=>{
-    console.log('Second window focus')
+  console.log(webContents.getAllWebContents())
+  // will log when finished loading
+  wc.on('did-finish-load', ()=>{
+    console.log('finished loading')
   })
 
+  
+
+  // helps in focusing on default window
+  // mainWindow.on('focus', ()=>{
+  //   console.log('Main window focus')
+  // })
+  // secondWindow.on('focus', ()=>{
+  //   console.log('Second window focus')
+  // })
+
   // helps in focussing on our whole app, disregarding of any window
-  app.on('browser-window-focus',()=>{
-    console.log('App focussed')
-  })
+  // app.on('browser-window-focus',()=>{
+  //   console.log('App focussed')
+  // })
 
   // console.log(BrowserWindow.getAllWindows())
 

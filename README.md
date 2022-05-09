@@ -66,3 +66,6 @@ npm run watch    //To automatically renrender
     - <a href="https://www.electronjs.org/docs/latest/api/browser-window#static-methods">Static Events </a> -> console.log this to know values
   
   - <a href='https://www.npmjs.com/package/electron-window-state'>electron-window-state</a> -> A npm library to store and restore window sizes and positions for your Electron app
+  - webContents -> its an very large api you can console.log to see properties
+    - <a href='https://www.electronjs.org/docs/latest/api/browser-window#winwebcontents-readonly'>webContents readonly</a>
+    - <a href='https://www.electronjs.org/docs/latest/api/web-contents'>webContents</a>
