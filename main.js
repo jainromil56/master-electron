@@ -1,5 +1,6 @@
 // Modules
 const { app, BrowserWindow } = require("electron");
+const windowStateKeeper = require('electron-window-state');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -8,9 +9,18 @@ let mainWindow, secondWindow;
 // Create a new BrowserWindow when `app` is ready
 function createWindow() {
 
+  //window state manager
+  let WinState = windowStateKeeper({
+    defaultWidth: 1000,
+    defaultHeight: 800
+  });
+
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 800,
+    width: WinState.width,
+    height: WinState.height,
+    // x and y coordinates for window position after closing and reopening
+    'x': WinState.x,
+    'y': WinState.y,
     // now it can be minimized till this only
     minWidth: 300, minHeight:150,
     webPreferences: {
@@ -44,10 +54,10 @@ function createWindow() {
   }); 
 
   // when second window is closed, mainwindow gets maximized
-  secondWindow.on('closed', ()=>{
-    mainWindow.maximize()
-  })
-  
+  // secondWindow.on('closed', ()=>{
+  //   mainWindow.maximize()
+  // })
+
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile("index.html");
   secondWindow.loadFile("secondary.html");
@@ -64,6 +74,8 @@ function createWindow() {
   // Open DevTools - Remove for PRODUCTION!
   // mainWindow.webContents.openDevTools();
 
+  WinState.manage(mainWindow)
+
   // helps in focusing on default window
   mainWindow.on('focus', ()=>{
     console.log('Main window focus')
@@ -77,7 +89,7 @@ function createWindow() {
     console.log('App focussed')
   })
 
-  console.log(BrowserWindow.getAllWindows())
+  // console.log(BrowserWindow.getAllWindows())
 
   // Listen for window being closed
   mainWindow.on("closed", () => {
