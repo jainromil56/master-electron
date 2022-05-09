@@ -19,6 +19,9 @@ function createWindow() {
       nodeIntegration: true,
     },
     backgroundColor: "#2B2E3B",
+    frame: false,
+    // shows minimize, maximize and close buttons at top
+    titleBarStyle: 'hidden',
   });
 
   secondWindow = new BrowserWindow({
