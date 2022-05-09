@@ -76,5 +76,8 @@ npm run watch    //To automatically renrender
       - make partition - let customSes = session.fromPartition('part1')
       - assign it to second window as session: customSes (this will allocate new localstorage to 2nd window)
     - ses.clearStorageData() - to clear storage
-    - ses.clearCache() - clears cache
+    - ses.clearCache() - clears cache 
+  
+  - #### <a href='https://www.electronjs.org/docs/latest/api/cookies'>Cookies</a>
+    - You can set cookie and then get cookie from app, check code on documentation
 
