@@ -78,6 +78,22 @@ npm run watch    //To automatically renrender
     - ses.clearStorageData() - to clear storage
     - ses.clearCache() - clears cache 
   
-  - #### <a href='https://www.electronjs.org/docs/latest/api/cookies'>Cookies</a>
+  - #### <a href='https://www.electronjs.org/docs/latest/api/cookies'>Class: Cookies</a>
     - You can set cookie and then get cookie from app, check code on documentation
+
+  - #### <a href='https://www.electronjs.org/docs/latest/api/download-item'>Class: DownloadItem</a>
+    - DownloadItem is an EventEmitter that represents a download item in Electron. It is used in will-download event of Session class, and allows users to control the download item.
+    - learn about NodeJs Event Emitter <a href='https://nodejs.org/api/events.html#class-eventemitter'>here</a>
+    ```
+    In HTML
+    <a href='splash.png' download>Download Image</a>
+
+    <!-- getFilename() gets downloading file name -->
+    let fileName = downloadItem.getFilename()
+    <!-- setSavePath will save our downloaded file in selected path -->
+    downloadItem.setSavePath(app.getPath('desktop') + `/${fileName}`)
+    ```
+    - getTotalBytes() -> returns bytes in Integer
+    - you can also make progress bar for downloading with real time update, watch 17 video from 8 min
+    - use this website to copy link for downloading different types of files -> <a href='https://file-examples.com/'>File Examples</a>
 
