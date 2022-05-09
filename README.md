@@ -97,3 +97,42 @@ npm run watch    //To automatically renrender
     - you can also make progress bar for downloading with real time update, watch 17 video from 8 min
     - use this website to copy link for downloading different types of files -> <a href='https://file-examples.com/'>File Examples</a>
 
+  - #### <a href='https://www.electronjs.org/docs/latest/api/dialog'>Dialog</a>
+    - you can open dialog box of File manager and select any folder and get that location in using app.getPath('desktop')
+    ```
+    const { dialog } = require('electron')
+    
+    mainWindow.webContents.on('did-finish-load', ()=>{
+
+      dialog.showOpenDialog({
+        buttonLabel: 'Select a photo',
+        defaultPath: app.getPath('desktop'),
+        properties: ['multiSelections','createDirectory', 'openFile', 'openDirectory']         
+      }).then( result => {
+        console.log(result)
+      })
+    })
+    ```
+      - multiSelections -> for selecting multiple files
+      - createDirectory -> shows create new folder icon (macos)
+
+    - showSaveDialog() -> for writing name of file for saving in File system
+    ```
+    dialog.showSaveDialog({}).then( result => {
+      console.log(result)  // o/p - file path with file name
+    })
+    ```
+    - showMessageBox() -> for showing popupbox
+    ```
+    const answer = ['Yes', 'No', 'Maybe']
+
+    dialog.showMessageBox({
+      title: 'Message Box',
+      message: 'Please select an option',
+      detail: 'Message details.',
+      buttons: answer
+    }).then( result => {
+      console.log(`User selected: ${answer[result.response]}`)
+    })
+    ```
+
