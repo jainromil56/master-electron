@@ -141,4 +141,7 @@ npm run watch    //To automatically renrender
 
   - #### Menu and MenuItem
     - Define menu just like defined in vscode with <a href='https://www.electronjs.org/docs/latest/api/menu'>Menu</a> and <a href='https://www.electronjs.org/docs/latest/api/menu-item'>MenuItem</a>
+    - you can learn about Menu.buildFromTemplate(), role, click, accelerator, label, submenu
+    - role such as copy, redo, undo, paste, toggleFullScreen, toggleDevTools, selecAll 
+    - you can set role: 'editMenu' for all cammands to have autmatically
 

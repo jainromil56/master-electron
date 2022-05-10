@@ -8,24 +8,7 @@ const { webContents } = require('electron')
 let mainWindow, secondWindow;
 
 // defining menu
-let mainMenu = Menu.buildFromTemplate([
-  // define menu items and its submenu
-  {
-    label:'Electron',
-    submenu: [
-      {label: 'Item 1'},
-      {label: 'Item 2', submenu: [{label: 'submenu 1'}]},
-      {label: 'Item 3'},
-    ]
-  },{
-    label:'Actions',
-    submenu: [
-      {label: 'Item 1'},
-      {label: 'Item 2', submenu: [{label: 'submenu 1'}]},
-      {label: 'Item 3'},
-    ]
-  }
-])
+let mainMenu = Menu.buildFromTemplate(require('./mainMenu'))
 
 
 // Create a new BrowserWindow when `app` is ready
