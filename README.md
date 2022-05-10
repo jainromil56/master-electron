@@ -136,3 +136,9 @@ npm run watch    //To automatically renrender
     })
     ```
 
+  - #### <a href='https://www.electronjs.org/docs/latest/api/accelerator'>Accelerator</a>
+    - Define keyboard shortcuts for you app, ex- in vs code we have many shortcuts, which is built with electronJs
+
+  - #### Menu and MenuItem
+    - Define menu just like defined in vscode with <a href='https://www.electronjs.org/docs/latest/api/menu'>Menu</a> and <a href='https://www.electronjs.org/docs/latest/api/menu-item'>MenuItem</a>
+
