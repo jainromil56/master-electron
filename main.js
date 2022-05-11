@@ -39,9 +39,11 @@ function createWindow() {
       nodeIntegration: true,
     },
     backgroundColor: "#2B2E3B",
-    frame: false,
+    // frame: false,
     // shows minimize, maximize and close buttons at top
-    titleBarStyle: 'hidden',
+    // titleBarStyle: 'hidden',
+    // titleBarOverlay: true,
+    autoHideMenuBar: false
   });
 
 
@@ -58,10 +60,10 @@ function createWindow() {
   // mainWindow.webContents.openDevTools();
 
   let wc = mainWindow.webContents
-  console.log(wc)
+  // console.log(wc)
   WinState.manage(mainWindow)
 
-  console.log(webContents.getAllWebContents())
+  // console.log(webContents.getAllWebContents())
   // will log when finished loading
   wc.on('did-finish-load', ()=>{
     console.log('finished loading')
