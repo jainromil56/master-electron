@@ -1,11 +1,37 @@
 // Modules
-const { app, BrowserWindow, Menu, MenuItem } = require("electron");
+const { app, BrowserWindow, Menu, MenuItem, Tray } = require("electron");
 const windowStateKeeper = require('electron-window-state');
 const { webContents } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow, secondWindow;
+let mainWindow, secondWindow, tray;
+
+// Tray menu
+let trayMenu = Menu.buildFromTemplate([
+  {label: 'Item 1'},
+  {role: 'quit'}
+])
+
+// function for tray
+function createTray(){
+  // icon for showing our app in navigation
+  tray = new Tray('trayTemplate@2x.png')
+  // see while hovering
+  tray.setToolTip('Tray details')
+
+  // click icon will show and hide mainwindow, but when click with shift it will quit app
+  tray.on('click', e => {
+    if(e.shiftKey){
+      app.quit()
+    }else{
+      mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show()
+    }
+  })
+
+  // shows menu on left-Click on icon
+  tray.setContextMenu(trayMenu)
+}
 
 // defining menu
 let mainMenu = Menu.buildFromTemplate(require('./mainMenu'))
@@ -19,6 +45,8 @@ let contextMenu = Menu.buildFromTemplate([
 
 // Create a new BrowserWindow when `app` is ready
 function createWindow() {
+
+  createTray()
 
   // setting default menu as mainMenu
   Menu.setApplicationMenu(mainMenu)

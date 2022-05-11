@@ -145,3 +145,9 @@ npm run watch    //To automatically renrender
     - role such as copy, redo, undo, paste, toggleFullScreen, toggleDevTools, selecAll 
     - you can set role: 'editMenu' for all cammands to have autmatically
 
+  - #### context-menu -> check code in commit
+
+  - #### <a href='https://www.electronjs.org/docs/latest/api/tray'>Tray</a>
+    - tray is something that is available on top right on macos and bottom left on windows navigation bar
+    - <a href='https://www.electronjs.org/docs/latest/api/tray#traysettooltiptooltip'>setToolTip</a> for showing popup on hover
+    - you can add menu, onclick events, Check commit for more
