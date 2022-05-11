@@ -151,3 +151,6 @@ npm run watch    //To automatically renrender
     - tray is something that is available on top right on macos and bottom left on windows navigation bar
     - <a href='https://www.electronjs.org/docs/latest/api/tray#traysettooltiptooltip'>setToolTip</a> for showing popup on hover
     - you can add menu, onclick events, Check commit for more
+
+  - #### <a href='https://www.electronjs.org/docs/latest/api/power-monitor'>powerMonitor</a>
+    - reponds to your machines on sleep, power off, on-battery (check 23 video)
