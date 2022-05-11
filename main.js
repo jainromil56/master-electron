@@ -10,6 +10,12 @@ let mainWindow, secondWindow;
 // defining menu
 let mainMenu = Menu.buildFromTemplate(require('./mainMenu'))
 
+// context menu
+let contextMenu = Menu.buildFromTemplate([
+  {label: 'Item 1'},
+  {role: 'editMenu'}
+])
+
 
 // Create a new BrowserWindow when `app` is ready
 function createWindow() {
@@ -54,6 +60,12 @@ function createWindow() {
 
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile("index.html");
+
+  // create context menu
+  mainWindow.webContents.on('context-menu', e => {
+    contextMenu.popup()
+  })
+
   // secondWindow.loadFile("secondary.html");
 
   // Open DevTools - Remove for PRODUCTION!
